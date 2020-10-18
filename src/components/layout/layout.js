@@ -1,10 +1,11 @@
 import React from 'react';
 import './layout.css';
+import { Header } from '../../containers';
 
 const Layout = (props) => {
 	return (
 	<div className='layout-container'>
-		<h1>header</h1>
+		<Header />
 		<div className='layout-body'>
 			{props.children ? props.children : ''}
 		</div>

@@ -26,7 +26,7 @@ module.exports = (env, { mode }) => ({
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
     compress: true
   },

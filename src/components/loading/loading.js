@@ -4,7 +4,7 @@ import './loading.css';
 
 const Loading = () => (
 	<div className='loading-container'>
-		<ReactLoading type={"bars"} color={"white"} />
+		<ReactLoading type={'bars'} color={'white'} />
 	</div>
 );
 

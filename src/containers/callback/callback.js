@@ -12,10 +12,11 @@ class CallBack extends React.Component {
       hashParams[e[1]] = decodeURIComponent(e[2]);
     }
 
-    if (!hashParams.access_token) {
-    } else {
+    if (hashParams.access_token) {
       props.setToken(hashParams.access_token);
+      props.fetchUser(hashParams.access_token);
     }
+
 	}
 
   render() {

@@ -4,7 +4,7 @@ import Home from './home';
 import { setToken } from '../../state/actions/token';
 
 const mapStateToProps = state => ({
-  token: state.tokenReducer ? state.tokenReducer.token : '',
+  token: state.token ? state.token.token : '',
 });
 
 const mapDispatchToProps = dispatch => {

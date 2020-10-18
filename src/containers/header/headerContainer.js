@@ -1,18 +1,15 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setToken } from '../../state/actions/token';
+import Header from './header';
 import { fetchUser } from '../../state/actions/user';
-import CallBack from './callback';
 
 const mapStateToProps = state => ({
-  token: state.token ? state.token.token : '',
+  user: state.user ? state.user.user : null,
 });
 
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
-		setToken,
-		fetchUser
 	}, dispatch);
 };
   
-export default connect(mapStateToProps, mapDispatchToProps)(CallBack);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

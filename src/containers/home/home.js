@@ -14,21 +14,6 @@ class Home extends React.Component {
     // search
   }
 
-  componentDidUpdate() {
-    let hashParams = {};
-    let e,
-      r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-    while ((e = r.exec(q))) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-    }
-
-    if (!hashParams.access_token) {
-    } else {
-      this.props.setToken(hashParams.access_token);
-    }
-  }
-
   render() {
     return (
       this.props.token ? 

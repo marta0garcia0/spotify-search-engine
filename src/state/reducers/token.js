@@ -1,6 +1,6 @@
 import { actionTypes } from '../actions/token';
 
-export const tokenReducer = (state = {}, action) => {
+export const token = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.SET_TOKEN:
       return {
@@ -12,4 +12,4 @@ export const tokenReducer = (state = {}, action) => {
   }
 };
 
-export default tokenReducer;
+export default token;
