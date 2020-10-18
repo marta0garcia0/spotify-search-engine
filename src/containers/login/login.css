@@ -1,0 +1,22 @@
+.login-container {
+	width: calc(100% - 20px);
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	margin: auto;
+	border-radius: 5px;
+	padding: 10px;
+	flex-direction: column;
+  flex-wrap: wrap;
+}
+.login-container div:first-child {
+	height: 40px;
+	display: flex;
+  align-items: center;
+}
+.login-container div:last-child {
+	height: calc(100% - 40px);
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}

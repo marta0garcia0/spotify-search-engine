@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { persistStore, persistReducer, } from 'redux-persist';
+import App from './app';
+import reducers from './state/reducers';
+import storage from 'redux-persist/lib/storage';
+import { Loading } from './components';
+
+// create the redux store
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+};
+const persistentReducer = persistReducer(persistConfig, reducers);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(persistentReducer, /* preloadedState, */ composeEnhancers(
+  applyMiddleware(thunk)
+));
+// to persist the token session
+const persistor = persistStore(store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  <Provider store={store}>
+    <PersistGate loading={<Loading />} persistor={persistor}>
+		  <App/>
+    </PersistGate>
+	</Provider>,
+document.querySelector('#app'));
