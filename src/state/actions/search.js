@@ -36,6 +36,10 @@ export const fetchSearch = (accessToken, item, type) => {
 			}
 		);
 		fetch(request).then(response => {
+			if(response.status !== 200) {
+				dispatch(setToken(''));
+				return;
+			}
 			return response.json();
 		}).then(res => {
 			dispatch(fetchSearchSuccess(res));

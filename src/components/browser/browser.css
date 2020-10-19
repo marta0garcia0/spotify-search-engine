@@ -11,9 +11,6 @@
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
-.browser-container.browser-container__hover .browser-add {
-  background-color: rgba(0, 0, 0, 0.8);
-}
 .browser-add {
   z-index: 1;
   width: 200px;
@@ -24,6 +21,5 @@
   line-height: 200px;
   font-size: 60px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 1);
   color: #aaa;
 }

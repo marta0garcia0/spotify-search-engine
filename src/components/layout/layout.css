@@ -12,5 +12,10 @@
 	display: flex;
 	position: relative;
 	width: 100%;
-	height: calc(100% - 100px);
+	height: calc(100% - 170px);
+}
+@media (min-width: 640px) {
+	.layout-body {
+		height: calc(100% - 100px);
+	}
 }

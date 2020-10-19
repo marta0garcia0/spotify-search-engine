@@ -9,55 +9,17 @@
   overflow-y: auto;
   display: flex;
 }
-.home-container::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
-
-.home-container::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
- 
-.home-container::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.6); 
   border-radius: 10px;
 }
-
-.home-container::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: rgb(0, 0, 0); 
-}
-
-.home-search_container {
-	display: flex;
-	width: 100%;
-}
-.home-search-button {
-	display: flex;
-	border-radius: 20px;
-	height: 30px;
-	width: 250px;
-	background-color: rgba(51, 51, 51, 0.9);
-	outline: none;
-	color: #fff;
-	text-align: left;
-	padding-left: 20px;
-	border: none;
-	margin: auto;
-}
-.home-text {
-	height: 40px;
-	display: flex;
-  align-items: center;
-}
-.home-search-button input {
-	line-height: 30px;
-	width: 210px;
-	background-color: rgba(51, 51, 51, 0.9);
-	outline: none;
-	color: #fff;
-	text-align: left;
-	border: none;
-}
-.home-search-button div:last-child {
-	line-height: 30px;;
 }

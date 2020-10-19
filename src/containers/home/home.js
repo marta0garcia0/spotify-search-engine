@@ -8,6 +8,8 @@ class Home extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.changeTimeout = 0;
+    this.props.deleteSearch();
+
   }
 
   handleChange(ev, type) {
@@ -15,8 +17,7 @@ class Home extends React.Component {
     const value = ev.target.value;
     // to avoid send several requests
     this.changeTimeout = setTimeout(() => {
-      if (value.length > 4) {
-        console.log(value);
+      if (value.length > 3) {
         this.props.fetchSearch(this.props.token, value, type)
       }
     }, 400)
@@ -40,9 +41,10 @@ class Home extends React.Component {
           key={'init'}
           search={this.props.search}
           onSearch={(ev, type) => this.handleChange(ev, type)}
+          onDiscard={this.props.deleteSearch}
           onSave={(search) => {
             this.props.updateSearchs(this.props.searchs, search);
-            this.props.deleteSearch()
+            this.props.deleteSearch();
           }}
         />
       </div>

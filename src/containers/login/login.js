@@ -11,7 +11,6 @@ class Login extends React.Component {
   }
 
 	handleClick() {
-		debugger
 		window.location.assign(`
 			${config.spotifyUrl}authorize?client_id=
 			${config.clientId}&scope=${encodeURI(config.scope)}
