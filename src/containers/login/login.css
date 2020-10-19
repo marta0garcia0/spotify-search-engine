@@ -4,7 +4,6 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	margin: auto;
-	border-radius: 5px;
 	padding: 10px;
 	flex-direction: column;
   flex-wrap: wrap;

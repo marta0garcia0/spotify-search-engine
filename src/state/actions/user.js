@@ -28,8 +28,9 @@ export const fetchUser = (accessToken) => {
 		});
 		fetch(request).then(res => {
 			// send user back to homepage if no token
-			if(res.statusText === 'Unauthorized') {
+			if(res.status !== 200) {
 				dispatch(setToken(''));
+				dispatch(fetchUserSuccess(null));
 				return;
 			}
 			return res.json();

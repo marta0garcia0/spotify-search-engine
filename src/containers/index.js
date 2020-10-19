@@ -1,5 +1,5 @@
 import Home from './home/homeContainer';
-import Login from './login/login';
+import Login from './login/loginContainer';
 import CallBack from './callback/callbackContainer';
 import Header from '../containers/header/headerContainer';
 
