@@ -8,8 +8,6 @@ class Home extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.changeTimeout = 0;
-    this.props.deleteSearch();
-
   }
 
   handleChange(ev, type) {
@@ -21,7 +19,6 @@ class Home extends React.Component {
         this.props.fetchSearch(this.props.token, value, type)
       }
     }, 400)
-    // search
   }
 
   render() {
@@ -32,8 +29,13 @@ class Home extends React.Component {
           this.props.searchs && this.props.searchs.map((search, i) =>
             <Browser
               key={i}
+              onDelete={() => this.props.deleteSearchs(this.props.searchs, i)}
               search={search}
               onSearch={(ev) => this.handleChange(ev, search)}
+              onDiscard={() => this.props.deleteSearchs(this.props.searchs, i)}
+              onSave={() => {
+                this.props.deleteSearch();
+              }}
             />
           )
         }
@@ -42,6 +44,7 @@ class Home extends React.Component {
           search={this.props.search}
           onSearch={(ev, type) => this.handleChange(ev, type)}
           onDiscard={this.props.deleteSearch}
+          onClose={() => this.props.deleteSearch()}
           onSave={(search) => {
             this.props.updateSearchs(this.props.searchs, search);
             this.props.deleteSearch();

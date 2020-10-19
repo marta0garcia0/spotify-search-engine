@@ -7,6 +7,11 @@ export const searchs = (state = {}, action) => {
 				...state,
 				searchs: action.searchs,
 			};
+		case actionTypes.DELETE_SEARCHS:
+			return {
+				...state,
+				searchs: action.searchs,
+			};
 		default:
 			return state;
 		}

@@ -11,7 +11,7 @@ const ArtistList = ({
           <img src={artist.images && artist.images.length > 2 ? artist.images[1].url : ''} />
           <div>{artist.name}</div>
           <div>Followers: {artist.followers.total}</div>
-          <div>Genres: {artist.genres.map((genre, key) => <span key={`genre${i}`} className='tags'>{genre}</span>)}</div>
+          <div>Genres: {artist.genres.map((genre, k) => <span key={`genre${k}`} className='tags'>{genre}</span>)}</div>
           <div>Popularity: {artist.popularity}</div>
         </li>
       );

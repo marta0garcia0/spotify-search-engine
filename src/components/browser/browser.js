@@ -14,15 +14,15 @@ const useHover = () => {
   return [hovered, eventHandlers];
 }
 
-const Browser = ({onSearch, onSave, onDiscard, search}) => {
+const Browser = ({onSearch, onSave, onClose, onDelete, onDiscard, search}) => {
   const [hovered, eventHandlers] = useHover();
   const [edit, setEdit] = useState(false);
   const [typeSelected, setTypeSelected] = useState(config.spotifyTypes[0]);
   return (
     !edit ? (
       search ?
-        <div className={`browser-container`} >
-          <Searched type={Object.keys(search)[0]} search={search}/>
+        <div className={`browser-container`} onClick={() => setEdit(true)}>
+          <Searched type={Object.keys(search)[0]} onDelete={onDelete} search={search}/>
         </div>
       :
       <div className={`browser-container browser-container__${hovered ? 'hover': ''}`}
@@ -33,11 +33,12 @@ const Browser = ({onSearch, onSave, onDiscard, search}) => {
       </div> 
     )
     :
-    <div className={``} >
+    <div>
       <NewSearch
         typeSelected={typeSelected}
         onSave={onSave}
         onDiscard={onDiscard}
+        onClose={() => {setEdit(false); onClose()}}
         setEdit={setEdit}
         setTypeSelected={setTypeSelected}
         onSearch={onSearch}

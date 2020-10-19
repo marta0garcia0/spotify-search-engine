@@ -5,6 +5,8 @@ import Browser from './browser/browser';
 import Searched from './searched/searched';
 import NewSearch from './new-search/newSearch';
 import ArtistList from './artistList/artistList';
+import AlbumList from './albumList/albumList';
+import TrackList from './trackList/trackList';
 
 export {
 	Layout,
@@ -14,4 +16,6 @@ export {
 	Searched,
 	NewSearch,
 	ArtistList,
+	AlbumList,
+	TrackList,
 };

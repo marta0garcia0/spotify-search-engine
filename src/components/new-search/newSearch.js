@@ -1,16 +1,24 @@
 import React from 'react';
 import './newSearch.css';
 import { config } from '../../config';
-import { Button, ArtistList } from '../../components';
+import { Button, ArtistList, AlbumList, TrackList } from '../../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const NewSearch = ({typeSelected, onSave, onDiscard, setEdit, setTypeSelected, onSearch, search}) => {
+const NewSearch = ({typeSelected, onClose, onSave, onDiscard, setEdit, setTypeSelected, onSearch, search}) => {
   const type = search ? Object.keys(search)[0] : '';
+  const list = () => {
+    switch(type) {
+      case 'artists':   return <ArtistList artists={search[type].items} />;
+      case 'albums':   return <AlbumList albums={search[type].items} />;
+      case 'tracks':   return <TrackList tracks={search[type].items} />;
+      default:      return <h1>No project match</h1>
+    }
+  };
   return (
     <div className='newsearch-container'>
       <div className='newsearch-container_header'>
-        <FontAwesomeIcon icon={faTimes} onClick={() => {onDiscard(); setEdit(false)}}/>
+        <FontAwesomeIcon icon={faTimes} onClick={() => {onClose(); setEdit(false)}}/>
       </div>
     <div className='home-text'>
       New search
@@ -37,7 +45,7 @@ const NewSearch = ({typeSelected, onSave, onDiscard, setEdit, setTypeSelected, o
           </form>
         </div>
       </div>
-              {search ? <ArtistList artists={search[type].items} /> : ''}
+              {search ? list() : ''}
     </div>
     <div className='newsearch-footer'>
         <Button
