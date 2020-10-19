@@ -13,6 +13,17 @@ export const search = (state = {}, action) => {
 				...state,
 				fetchSearchError: true
 			};
+		case actionTypes.FETCH_NEXT_SUCCESS:
+			return {
+				...state,
+				search: action.search,
+				fetchNextError: false
+			};
+		case actionTypes.FETCH_NEXT_ERROR:
+			return {
+				...state,
+				fetchNextError: true
+			};
 		case actionTypes.DELETE_SEARCH:
 			return {
 				...state,

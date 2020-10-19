@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Home from './home';
 import { setToken } from '../../state/actions/token';
-import { fetchSearch, deleteSearch } from '../../state/actions/search';
+import { fetchSearch, deleteSearch, fetchNext } from '../../state/actions/search';
 import { updateSearchs, deleteSearchs } from '../../state/actions/searchs';
 
 const mapStateToProps = state => ({
@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => {
 		updateSearchs,
 		deleteSearch,
 		deleteSearchs,
+		fetchNext,
 	}, dispatch);
 };
   

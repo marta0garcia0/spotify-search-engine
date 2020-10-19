@@ -10,9 +10,8 @@ class Home extends React.Component {
     this.changeTimeout = 0;
   }
 
-  handleChange(ev, type) {
+  handleChange(value, type) {
     clearTimeout(this.changeTimeout);
-    const value = ev.target.value;
     // to avoid send several requests
     this.changeTimeout = setTimeout(() => {
       if (value.length > 3) {
@@ -31,24 +30,26 @@ class Home extends React.Component {
               key={i}
               onDelete={() => this.props.deleteSearchs(this.props.searchs, i)}
               search={search}
-              onSearch={(ev) => this.handleChange(ev, search)}
+              onSearch={(value) => this.handleChange(value, search)}
               onDiscard={() => this.props.deleteSearchs(this.props.searchs, i)}
               onSave={() => {
                 this.props.deleteSearch();
               }}
+              next={(nextUrl, search) => this.props.fetchNext(this.props.token, nextUrl, search)}
             />
           )
         }
         <Browser
           key={'init'}
           search={this.props.search}
-          onSearch={(ev, type) => this.handleChange(ev, type)}
+          onSearch={(value, type) => this.handleChange(value, type)}
           onDiscard={this.props.deleteSearch}
           onClose={() => this.props.deleteSearch()}
           onSave={(search) => {
             this.props.updateSearchs(this.props.searchs, search);
             this.props.deleteSearch();
           }}
+          next={(nextUrl, search) => this.props.fetchNext(this.props.token, nextUrl, search)}
         />
       </div>
       :
