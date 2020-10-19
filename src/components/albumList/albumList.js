@@ -1,6 +1,6 @@
 import React from "react";
-import "./albumList.css";
 import { Button } from "../../components";
+import "./albumList.css";
 
 const albumList = ({
   albums,

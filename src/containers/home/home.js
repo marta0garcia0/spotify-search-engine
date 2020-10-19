@@ -8,6 +8,7 @@ class Home extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.changeTimeout = 0;
+    this.props.deleteSearch();
   }
 
   handleChange(value, type) {
@@ -29,8 +30,9 @@ class Home extends React.Component {
             <Browser
               key={i}
               onDelete={() => this.props.deleteSearchs(this.props.searchs, i)}
-              search={search}
+              search={this.props.search ? this.props.search : search}
               onSearch={(value) => this.handleChange(value, search)}
+              onClose={this.props.deleteSearch}
               onDiscard={() => this.props.deleteSearchs(this.props.searchs, i)}
               onSave={() => {
                 this.props.deleteSearch();

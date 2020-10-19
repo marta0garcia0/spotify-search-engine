@@ -1,5 +1,10 @@
+.searched-container button {
+  margin-left: 50px;
+}
 .searched-container img {
   display: block;
   margin-top: 10px;
   width: 200px;
+  margin: auto;
+  margin-top: 20px;
 }
