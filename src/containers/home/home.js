@@ -46,7 +46,7 @@ class Home extends React.Component {
           onDiscard={this.props.deleteSearch}
           onClose={() => this.props.deleteSearch()}
           onSave={(search) => {
-            this.props.updateSearchs(this.props.searchs, search);
+            this.props.updateSearchs(this.props.searchs, [search]);
             this.props.deleteSearch();
           }}
           next={(nextUrl, search) => this.props.fetchNext(this.props.token, nextUrl, search)}

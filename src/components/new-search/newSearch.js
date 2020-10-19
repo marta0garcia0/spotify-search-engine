@@ -9,10 +9,16 @@ const NewSearch = ({typeSelected, onClose, onSave, next, onDiscard, setEdit, set
   const type = search ? Object.keys(search[0])[0] : '';
   const list = () => {
     switch(type) {
-      case 'artists':   return <ArtistList artists={search.map(s => s[type].items)} />;
-      case 'albums':   return <AlbumList albums={search.map(s => s[type].items)} />;
-      case 'tracks':   return <TrackList tracks={search.map(s => s[type].items)} next={() => next(search[search.length -1].tracks.next, search)}/>;
-      default:      return <h1>No project match</h1>
+      case 'artists': return <ArtistList artists={search.map(s => s[type].items)}
+        hasNext={!!search[search.length - 1][type].next}
+        next={() => next(search[search.length -1].artists.next, search)}/>;
+      case 'albums': return <AlbumList albums={search.map(s => s[type].items)}
+        hasNext={!!search[search.length - 1][type].next}
+        next={() => next(search[search.length -1].albums.next, search)}/>;
+      case 'tracks': return <TrackList tracks={search.map(s => s[type].items)}
+        hasNext={!!search[search.length - 1][type].next}
+        next={() => next(search[search.length -1].tracks.next, search)}/>;
+      default: return <h1>No project match</h1>
     }
   };
   return (

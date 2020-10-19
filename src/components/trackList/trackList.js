@@ -4,6 +4,7 @@ import "./trackList.css";
 
 const trackList = ({
   tracks,
+  hasNext,
   next
 }) => {
   const renderTracks = () => {
@@ -31,12 +32,13 @@ const trackList = ({
   return (
     <div>
       <ul className="track-list-container">{tracks && renderTracks()}</ul>
-      <div className='track-list__more'>
+      {hasNext ?
+        <div className='track-list__more'>
         <Button
           onClick={next}
           type={'dark'} text={'More...'}>
         </Button>
-      </div>
+      </div>:''}
     </div>
   );
 };
