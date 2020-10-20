@@ -1,18 +1,17 @@
-import React from "react";
-import { Button } from "../../components";
-import "./artistList.css";
+import React, { useState } from 'react';
+import { Button } from '../../components';
+import './artistList.css';
 
 const ArtistList = ({
   artists,
   hasNext,
   next
 }) => {
-  const renderArtists = () => {
+  const renderArtists = (scroll) => {
     return artists.map((artistAr, i) => {
-      const newScroll = document.getElementsByClassName('artist-list-container')[0] ?
-        document.getElementsByClassName('artist-list-container')[0].offsetHeight -
-        document.getElementsByClassName('newsearch-search_container')[0].offsetHeight
-        : 0;
+      setTimeout( () => {
+        document.getElementsByClassName('newsearch-search_container')[0].scroll(0, scroll)
+      }, 0);
       return artistAr.map((artist, i) => {
         if (newScroll > 0) {
           document.getElementsByClassName('newsearch-search_container')[0].scroll(0, newScroll)
@@ -29,15 +28,16 @@ const ArtistList = ({
       });
     });
   };
-
+  const newScroll = () => document.getElementsByClassName('newsearch-search_container')[0].scrollTop;
+  const [scroll, setScroll] = useState(0);
   return (
     <div>
-      <ul className="artist-list-container">{artists && renderArtists()}</ul>
+      <ul className='artist-list-container'>{artists && renderArtists(scroll)}</ul>
       <div className='track-list__more'>
       {hasNext ?
         <div className='track-list__more'>
         <Button
-          onClick={next}
+          onClick={() => {setScroll(newScroll()); next()}}
           type={'dark'} text={'More...'}>
         </Button>
       </div>:''}

@@ -1,18 +1,17 @@
-import React from "react";
-import { Button } from "../../components";
-import "./albumList.css";
+import React, { useState } from 'react';
+import { Button } from '../../components';
+import './albumList.css';
 
 const albumList = ({
   albums,
   hasNext,
   next
 }) => {
-  const renderAlbums = () => {
+  const renderAlbums = (scroll) => {
+    setTimeout( () => {
+      document.getElementsByClassName('newsearch-search_container')[0].scroll(0, scroll)
+    }, 0);
     return albums.map((albumAr, i) => {
-      const newScroll = document.getElementsByClassName('album-list-container')[0] ?
-        document.getElementsByClassName('album-list-container')[0].offsetHeight -
-        document.getElementsByClassName('newsearch-search_container')[0].offsetHeight
-        : 0;
       return albumAr.map((album, i) => {
         if (newScroll > 0) {
           document.getElementsByClassName('newsearch-search_container')[0].scroll(0, newScroll)
@@ -29,14 +28,15 @@ const albumList = ({
       });
     });
   };
-
+  const newScroll = () => document.getElementsByClassName('newsearch-search_container')[0].scrollTop;
+  const [scroll, setScroll] = useState(0);
   return (
     <div>
-      <ul className="album-list-container">{albums && renderAlbums()}</ul>
+      <ul className='album-list-container'>{albums && renderAlbums(scroll)}</ul>
       {hasNext ?
         <div className='track-list__more'>
         <Button
-          onClick={next}
+          onClick={() => {setScroll(newScroll()); next()}}
           type={'dark'} text={'More...'}>
         </Button>
       </div>:''}

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Button } from "../../components";
+import { useHistory } from 'react-router-dom';
 import "./trackList.css";
 
 const trackList = ({
@@ -7,18 +8,20 @@ const trackList = ({
   hasNext,
   next
 }) => {
-  const renderTracks = () => {
+  const renderTracks = (scroll) => {
+    const history = useHistory();
+    setTimeout( () => {
+      document.getElementsByClassName('newsearch-search_container')[0].scroll(0, scroll)
+    }, 0);
     return tracks.map((trackAr, j) => {
-      const newScroll = document.getElementsByClassName('track-list-container')[0] ?
-        document.getElementsByClassName('track-list-container')[0].offsetHeight -
-        document.getElementsByClassName('newsearch-search_container')[0].offsetHeight
-        : 0;
       return trackAr.map((track, i) => {
-        if (newScroll > 0) {
-          document.getElementsByClassName('newsearch-search_container')[0].scroll(0, newScroll)
-        }
         return (
-          <li key={`track${i}${j}`}>
+          // MARTAAAA
+          <li key={`track${i}${j}`} className='track__play'
+            onClick={() => 
+              history.push(`/track/${track.id}`)
+              }
+            >
             <img src={track.album.images && track.album.images.length > 2 ? track.album.images[1].url : ''} />
             <div>{track.name}</div>
             <div>Album: {track.album.name}</div>
@@ -28,14 +31,15 @@ const trackList = ({
       });
     });
   };
-
+  const newScroll = () => document.getElementsByClassName('newsearch-search_container')[0].scrollTop;
+  const [scroll, setScroll] = useState(0);
   return (
     <div>
-      <ul className="track-list-container">{tracks && renderTracks()}</ul>
+      <ul className="track-list-container">{tracks && renderTracks(scroll)}</ul>
       {hasNext ?
         <div className='track-list__more'>
         <Button
-          onClick={next}
+          onClick={() => {setScroll(newScroll()); next()}}
           type={'dark'} text={'More...'}>
         </Button>
       </div>:''}

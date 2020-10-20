@@ -16,6 +16,5 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   width: 220px;
-  cursor: pointer;
   text-align: center;
 }

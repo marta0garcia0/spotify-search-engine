@@ -1,10 +1,10 @@
 .newsearch-container {
   position: fixed;
   background-color: rgba(0,0,0, 0.9);
-  width: calc(100% - 60px);
+  width: calc(100% - 70px);
   height: 80%;
-  top: 100px;
-  left: 20px;
+  top: 105px;
+  left: 25px;
   padding: 10px;
 }
 .newsearch-container_header {

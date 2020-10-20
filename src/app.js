@@ -2,7 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import { Home, Login, CallBack } from './containers';
+import { Track, Home, Login, CallBack } from './containers';
 import './app.css';
 import { Layout } from './components';
 
@@ -14,8 +14,7 @@ const App = () => (
       <Route exact={true} path='/' component={ Home } />
       <Route path='/login' render={ props => (<Login {...props} />) } />
       <Route path='/callback' component={ CallBack } />
-      <Route path='/artists' component={Home} />
-      <Route path='/artists/:id' component={Home} />
+      <Route path='/track/:id' component={Track} />
     </Layout>
   </BrowserRouter>
 );
