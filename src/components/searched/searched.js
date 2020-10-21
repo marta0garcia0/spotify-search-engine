@@ -1,18 +1,19 @@
 import React from 'react';
 import './searched.css';
-import { config } from '../../config';
 import { Button } from '../../components';
 
-const Searched = ({type, onDelete, search}) => {
-  const item = search[0][type].items[0];
-  const image = item && item.images ? item.images[0].url : item.album.images[0].url;
+const Searched = ({type, onDelete, onEdit, search}) => {
+  const item = search[type] && search[type].items ? search[type].items[0] : null;
+  const image = item ? (item.images ? item.images[0].url : item.album.images[0].url) : null;
 
   return (
     <div className='searched-container'>
       <span>Type: {type}</span>
-      {search[0][type].items ?
-        <img src={image} /> : ''}
-      <Button
+      {search[type] && search[type].items ?
+        <img 
+          onClick={() => onEdit()}
+          src={image} /> : ''}
+        <Button
           onClick={onDelete}
           type={'plain'} text={'Delete'}>
         </Button>

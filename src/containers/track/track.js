@@ -1,40 +1,55 @@
-import React from 'react';
-
+import React, { createRef } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Redirect } from 'react-router-dom';
 import './track.css';
 
 class Track extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      image: 'https://is4-ssl.mzstatic.com/image/thumb/Music111/v4/23/63/c0/2363c065-8874-55bb-b8f0-9eda248761ca/UMG_cvrart_00602557393187_01_RGB72_1800x1800_17UMGIM01262.jpg/1200x630bb.jpg',
-      actualSong: 'Amarrame',
-      artist: 'Mon Laferte',
-      songId: this.props.match.params.songId
-    }
+    this.onClose = this.onClose.bind(this);
+    this.player = this.player.bind(this);
+    this.audioRef = createRef()
+
   }
-  componentWillMount(){
-    this.props.playTrack(this.props.match.params.id, this.props.token);
+
+  onClose() {
+    this.setState({player: null});
+    this.props.history.push('/search');
   }
+
+  player() {
+    setTimeout(() => {
+      this.audioRef.current.load();
+    }, 0);
+    return (
+      <audio controls ref={this.audioRef} onClick={() => this.player()}>
+        <source src={ this.props.player.preview_url } type='audio/mp3'/>
+          Your browser does not support the audio element.
+      </audio>
+    );
+  }
+
   render() {
     return this.props.token ? 
-      <div className='home-container'>
-        <div className="Player">
-          <div className="card" style={{ width: '45%'}}>
-            <div className="card-content" style={{display: 'flex'}}>
-              <div className="Player-card-leftBox">
-              <img src={this.props.player.album.images && this.props.player.album.images.length > 2 ?
+      <div className='newsearch-container'>
+        <div className='newsearch-container_header'>
+          <FontAwesomeIcon icon={faTimes} onClick={() => {this.onClose();}}/>
+        </div>
+        <div className='track-container'>
+          <div className='track__image'>
+            <img src={this.props.player.album.images && this.props.player.album.images.length > 1 ?
                 this.props.player.album.images[1].url : ''} />
-              </div>
-              <div className="Player-card-rightBox">
-                <audio controls>
-                  <source src={ this.props.player.preview_url } type="audio/mp3"/>
-                    Your browser does not support the audio element.
-                </audio>
-                <h4 className="Player-card-rightBox-song">Name: { this.props.player.name }</h4>
-                <h6 className="Player-card-rightBox-song">Album: { this.props.player.album.name }</h6>
-                <h6 className="Player-card-rightBox-song">Release date: { this.props.player.album.release_date }</h6>
-              </div>
-            </div>
+          </div>
+          <div className='track__info'>
+            <h3>Name: { this.props.player.name }</h3>
+            <h5>Album: { this.props.player.album.name }</h5>
+            <h5>Release date: { this.props.player.album.release_date }</h5>
+          </div>
+        </div>
+        <div className='track-container__player'>
+          <div className='track__player' >
+            {this.player()}
           </div>
         </div>
       </div>

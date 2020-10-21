@@ -4,6 +4,7 @@ import Login from './login';
 
 const mapStateToProps = state => ({
   token: state.token ? state.token.token : '',
+  user: state.user ? state.user.user : null,
 });
 
 const mapDispatchToProps = dispatch => {

@@ -1,26 +1,30 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Home from './home';
+import Search from './search';
 import { setToken } from '../../state/actions/token';
-import { fetchSearch, deleteSearch, fetchNext, editSearch } from '../../state/actions/search';
-import { updateSearch, updateSearchs, deleteSearchs } from '../../state/actions/searchs';
+import { fetchSearch, deleteSearch, fetchNext } from '../../state/actions/search';
+import { updateSearchs, deleteSearchs, updateSearch } from '../../state/actions/searchs';
+import { playTrack } from '../../state/actions/player';
 
 const mapStateToProps = state => ({
   token: state.token ? state.token.token : '',
   searchs: state.searchs ? state.searchs.searchs : '',
   search: state.search ? state.search.search : '',
+  editSearch: state.search ? state.search.editSearch : false,
+  
 });
 
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
 		setToken,
 		fetchSearch,
-		updateSearchs,
+    updateSearchs,
+    updateSearch,
 		deleteSearch,
 		deleteSearchs,
-		fetchNext,
-		editSearch,
+    fetchNext,
+    playTrack,
 	}, dispatch);
 };
   
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

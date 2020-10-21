@@ -3,6 +3,7 @@ import { setToken } from '../actions/token';
 
 export const actionTypes = {
     FETCH_SEARCH_SUCCESS: 'FETCH_SEARCH_SUCCESS',
+		EDIT_SEARCH: 'EDIT_SEARCH',
 		FETCH_SEARCH_ERROR: 'FETCH_SEARCH_ERROR',
 		FETCH_NEXT_SUCCESS: 'FETCH_NEXT_SUCCESS',
 		FETCH_NEXT_ERROR: 'FETCH_NEXT_ERROR',
@@ -41,6 +42,13 @@ export const deleteSearch = () => {
 	};
 }
 
+export const editSearch = (search) => {
+	return {
+		type: actionTypes.EDIT_SEARCH,
+		editSearch: true,
+		search
+	};
+}
 export const fetchSearch = (accessToken, item, type) => {
 	return dispatch => {
 		const request = new Request(

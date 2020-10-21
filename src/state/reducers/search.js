@@ -6,7 +6,14 @@ export const search = (state = {}, action) => {
 			return {
 				...state,
 				search: action.search,
+				editSearch: false,
 				fetchSearchError: false
+			};
+		case actionTypes.EDIT_SEARCH:
+			return {
+				...state,
+				search: action.search,
+				editSearch: true,
 			};
 		case actionTypes.FETCH_SEARCH_ERROR:
 			return {
@@ -27,6 +34,7 @@ export const search = (state = {}, action) => {
 		case actionTypes.DELETE_SEARCH:
 			return {
 				...state,
+				editSearch: false,
 				search: null
 			}
 		default:

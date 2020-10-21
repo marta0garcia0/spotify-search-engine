@@ -8,7 +8,7 @@ const ArtistList = ({
   next
 }) => {
   const renderArtists = (scroll) => {
-    return artists.map((artistAr, i) => {
+    return artists.map((artistAr, j) => {
       setTimeout( () => {
         document.getElementsByClassName('newsearch-search_container')[0].scroll(0, scroll)
       }, 0);
@@ -17,7 +17,7 @@ const ArtistList = ({
           document.getElementsByClassName('newsearch-search_container')[0].scroll(0, newScroll)
         }
         return (
-          <li key={i}>
+          <li key={`${i}${j}`}>
             <img src={artist.images && artist.images.length > 2 ? artist.images[1].url : ''} />
             <div>{artist.name}</div>
             <div>Followers: {artist.followers.total}</div>

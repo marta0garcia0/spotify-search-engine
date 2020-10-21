@@ -7,10 +7,10 @@ import { Redirect } from 'react-router-dom'
 class Login extends React.Component {
   constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
+		this.requestToken = this.requestToken.bind(this);
   }
 
-	handleClick() {
+	requestToken() {
 		window.location.assign(`
 			${config.spotifyUrl}authorize?client_id=
 			${config.clientId}&scope=${encodeURI(config.scope)}
@@ -20,6 +20,8 @@ class Login extends React.Component {
 	}
   render() {
     return (
+			this.props.user ? <div>{this.requestToken()}</div>
+			:
       this.props.token ? 
       	<Redirect to={{ pathname: '/' }} />
 			:
@@ -29,7 +31,7 @@ class Login extends React.Component {
 					</div>
 					<div>
 						<Button
-							onClick={this.handleClick}
+							onClick={this.requestToken}
 							type={'dark'} text={'Login'}>
 						</Button>
 					</div>

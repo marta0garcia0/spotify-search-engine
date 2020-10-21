@@ -22,3 +22,6 @@
 .track-list__more {
   padding-left: calc(50% - 100px);
 }
+.track__play {
+  cursor: pointer;
+}

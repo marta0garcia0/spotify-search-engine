@@ -6,4 +6,7 @@ export const config = {
     redirectUri: '/callback',
     spotifyAPI: 'https://api.spotify.com/v1/',
     spotifyTypes: ['artist', 'track', 'album'],
+    searchsMaxLength: 10,
+    maxSavedLists: 40,
+    pagination: 20,
 };

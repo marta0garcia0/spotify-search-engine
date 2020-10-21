@@ -1,10 +1,12 @@
 import React from 'react';
 import './header.css';
+import { useHistory } from 'react-router-dom';
 
 const Header = ({user}) => {
+	const history = useHistory();
 	return (
 		<div className='header-container'>
-			<h1>Spotify Search Engine</h1>
+			<h1 onClick={() => history.push(`/`)}>Spotify Search Engine</h1>
 			{user ?
 			<div className='header-user'>
 				<div>{user.display_name}</div>

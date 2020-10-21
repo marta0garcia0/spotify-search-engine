@@ -6,7 +6,8 @@ import "./trackList.css";
 const trackList = ({
   tracks,
   hasNext,
-  next
+  next,
+  playTrack,
 }) => {
   const renderTracks = (scroll) => {
     const history = useHistory();
@@ -16,11 +17,11 @@ const trackList = ({
     return tracks.map((trackAr, j) => {
       return trackAr.map((track, i) => {
         return (
-          // MARTAAAA
           <li key={`track${i}${j}`} className='track__play'
-            onClick={() => 
+            onClick={() => {
+              playTrack(track.id);
               history.push(`/track/${track.id}`)
-              }
+              }}
             >
             <img src={track.album.images && track.album.images.length > 2 ? track.album.images[1].url : ''} />
             <div>{track.name}</div>

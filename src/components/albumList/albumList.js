@@ -11,13 +11,13 @@ const albumList = ({
     setTimeout( () => {
       document.getElementsByClassName('newsearch-search_container')[0].scroll(0, scroll)
     }, 0);
-    return albums.map((albumAr, i) => {
+    return albums.map((albumAr, j) => {
       return albumAr.map((album, i) => {
         if (newScroll > 0) {
           document.getElementsByClassName('newsearch-search_container')[0].scroll(0, newScroll)
         }
         return (
-          <li key={i}>
+          <li key={`${i}${j}`}>
             <img src={album.images && album.images.length > 2 ? album.images[1].url : ''} />
             <div>{album.name}</div>
             <div>Album type: {album.album_type}</div>
