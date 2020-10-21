@@ -15,3 +15,4 @@ Engine to search for artists, albums and tracks in spotify
 3. So far the player only works when searching for tracks
 ### TODO
   player for track list when searching for albums or artists or tracks
+  possibility to save songs
