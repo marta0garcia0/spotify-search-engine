@@ -32,7 +32,8 @@ class Home extends React.Component {
             type={'plain'} text={'New search'}>
           </Button>
           </div>
-          Recent searchs:
+          {this.props.searchs && this.props.searchs.length > 0 ? 'Recent searchs'
+            : 'Nothing here... try to do a new search'}
         </div> 
         <div className='home-content'>
           {
