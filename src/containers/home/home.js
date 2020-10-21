@@ -33,7 +33,7 @@ class Home extends React.Component {
           </Button>
           </div>
           {this.props.searchs && this.props.searchs.length > 0 ? 'Recent searchs'
-            : 'Nothing here... try to do a new search'}
+            : 'Nothing here yet... try to do a new search'}
         </div> 
         <div className='home-content'>
           {
