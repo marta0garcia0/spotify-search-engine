@@ -9,9 +9,6 @@ class Home extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.changeTimeout = 0;
-    if (this.props.search) {
-      this.props.deleteSearch();
-    }
   }
 
   handleChange(value, type) {

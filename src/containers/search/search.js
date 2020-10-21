@@ -41,6 +41,7 @@ class Search extends React.Component {
   }
 
   onClose() {
+    this.props.deleteSearch();
     this.props.history.push('/');
   }
 
